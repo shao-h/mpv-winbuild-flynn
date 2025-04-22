@@ -72,8 +72,8 @@ jobs:
         with:
           script: |
             const commit = await github.rest.repos.getCommit({
-              owner: 'mpv-player',
-              repo: 'mpv',
+              owner: 'shao-h',
+              repo: 'mpv_pro',
               ref: `master`
             })
             core.setOutput('sha', String(commit.data.sha))
@@ -135,8 +135,8 @@ jobs:
               
               try {
                 const res = await waitingMergeability({
-                  owner: "mpv-player",
-                  repo: "mpv",
+                  owner: "shao-h",
+                  repo: "mpv_pro",
                   pull_number: pr_number,
                 });
                 if( res === undefined || res.data.merged || !res.data.mergeable ) {
@@ -649,7 +649,7 @@ jobs:
         with:
           script: |
             const sha = `${{ needs.params.outputs.sha }}`;
-            let note = `**MPV Git commit**: https://github.com/mpv-player/mpv/commit/${sha}\n`;
+            let note = `**MPV Git commit**: https://github.com/shao-h/mpv_pro/commit/${sha}\n`;
             note+="**Build Time**: ${{ env.long_time }}\n";
             note+="**Compiler**: ${{ inputs.compiler }}\n";
             note+="**Build Details**: https://github.com/${{github.repository}}/actions/runs/${{github.run_id}}\n";
